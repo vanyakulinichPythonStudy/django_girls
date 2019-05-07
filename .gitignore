@@ -1,0 +1,6 @@
+*.pyc
+*~
+__pycache__
+django_girls_env
+.DS_Store
+.vscode
