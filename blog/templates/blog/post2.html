@@ -1,0 +1,30 @@
+{% load static %}
+
+	<div class="post">
+	 	{% ifequal post.author request.user%}
+            <a class="" href="{% url 'post_edit' pk=post.pk %}"><span class="edit_post glyphicon glyphicon-pencil"></span></a>
+    	{% endifequal %}
+
+	
+
+	     <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+	    <p>{{ post.text|linebreaksbr }}</p>
+
+	    <div class="footer_post">
+	    			<div class = "left_footer">
+	                	<span>{{post.created_date}}</span>
+	                	<span>{{post.author}}</span>
+	                </div>
+
+	    			<div class = "right_footer">
+	    				<span class = "{% ifequal post.author request.user%}
+	    					post_author
+	    				{% endifequal %}
+	    				">{{post.author}}</span>
+	                	<span>{{post.created_date}}</span>
+	                </div>
+	    </div>
+	</div>
+
+
+{# 00000000000000000000000000000000000000000000000 #}

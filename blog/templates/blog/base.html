@@ -1,26 +1,20 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>{% block title %}Django{% endblock %}</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/myScript.js' %}"></script>
+        <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+        
+        {% block style_files %}
+        {% endblock%}
     </head>
     <body>
-       <div class="page-header">
-        {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {% endif %}
-        <h1><a href="/">Django Girls Blog</a></h1>
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
-        </div>
-    </div>
+       {% block body %} {% endblock %}
     </body>
 </html>

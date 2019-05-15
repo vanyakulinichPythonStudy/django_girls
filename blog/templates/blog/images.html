@@ -1,0 +1,15 @@
+{% extends 'blog/content_post.html'%}
+{% load static %}
+{% load extras %}
+
+{% block style_files %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/images.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+ {% images "/static/images/0.jpg" "Image" %}
+
+{% endblock %}

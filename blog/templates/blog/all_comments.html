@@ -1,0 +1,29 @@
+{% extends 'blog/content_post.html'%}
+{% load static %}
+{% load extras %}
+
+{% block style_files %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/comments.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class='all_comments'>
+  {% for comment in comments %}
+    <div class="comment_info">
+      <div class='comment_message'>{{comment.text_massage|valid_url:'https://'}}</div>
+      <div class='comment_credentials'>
+        <div class='comment_author'>Author: {{comment.author}}</div>
+        |
+        <div class='comment_date'>Date: {{comment.date}}</div>
+      </div>
+      <span class='comment_post_link'>
+        <a href="{% url 'post_detail' pk=comment.answer_massage_id %}">Go to post</a>
+      <span>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block style_files %}
+
+	{% include 'blog/includes/style/style_all.html' %}
+
+        {% url 'post_fresher'  as fr %}
+		{% url 'post_discus'  as dis %}
+        {% if request.path == fr %}
+    		<link rel="stylesheet" href="{% static 'css/fresher.css' %}">
+    	{% elif request.path == dis %}
+    		<link rel="stylesheet" href="{% static 'css/discus.css' %}">
+    	{% endif %}	
+
+
+{% endblock %}
+
+{% block body %}
+<div class="page-header">
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
+
+        <h1><a href="{% url 'post_list' %}">Django Girls Blog</a></h1>
+        <h2><a href="{% url 'post_fresher' %}">Свежее</a></h2>
+        <h2><a href="{% url 'post_discus' %}">Обсуждажемое</a></h2>
+        <h2><a href="{% url 'all_comments' %}">Comments</a></h2>
+        <h2><a href="{% url 'images' %}">Images</a></h2>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+{% endblock %}
